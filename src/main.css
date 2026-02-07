@@ -1,2 +1,92 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+
+/* =========================
+   Fonts
+   ========================= */
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../shared/assets/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../shared/assets/fonts/Inter-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../shared/assets/fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================
+   Theme
+   ========================= */
+
+@theme {
+  --font-sans: 'Inter';
+
+  --color-brand-orange: #ff5f00;
+  --color-brand-orange-hover: #ff9e59;
+  --color-brand-orange-active: #ff3d00;
+  --color-brand-white: #ffffff;
+
+  --radius-button: 20px;
+  --radius-card: 24px;
+}
+
+/* =========================
+   Base
+   ========================= */
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================
+   Components
+   ========================= */
+
+@layer components {
+  .btn-primary {
+    @apply flex items-center justify-center
+           bg-brand-orange text-brand-white
+           rounded-button py-7 px-16 cursor-pointer
+           transition-colors
+           disabled:opacity-70 disabled:cursor-not-allowed;
+
+    @apply hover:bg-brand-orange-hover
+           active:bg-brand-orange-active;
+  }
+
+  .btn-text-wrapper {
+    @apply relative flex items-center justify-center;
+  }
+
+  .btn-spinner {
+    @apply absolute right-full mr-1
+           flex items-center justify-center
+           w-5 h-5
+           transition-opacity duration-300;
+  }
+
+  .btn-text {
+    @apply font-semibold text-base transition-transform duration-300;
+  }
+
+  .btn-text-shifted {
+    @apply translate-x-3;
+  }
+}
