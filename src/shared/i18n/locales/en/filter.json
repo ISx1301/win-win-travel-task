@@ -1,1 +1,6 @@
-{}
+{
+  "title": "WinWinTravel",
+  "open_filters": "Open Filters",
+  "loading": "Loading filters...",
+  "current_request": "Current Search Request (JSON):"
+}
