@@ -8,6 +8,6 @@ interface FilterState {
 }
 
 export const useFilterStore = create<FilterState>(set => ({
-	appliedFilters: [],
+	appliedFilters: [], // Инициализируем массивом
 	setAppliedFilters: filters => set({ appliedFilters: filters })
 }))

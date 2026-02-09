@@ -40,9 +40,13 @@
 	--color-brand-orange-hover: #ff9e59;
 	--color-brand-orange-active: #ff3d00;
 	--color-brand-white: #ffffff;
+    --color-brand-clear: #078691;
+    --color-brand-gray: #31393C;
 
 	--radius-button: 20px;
 	--radius-card: 24px;
+
+    --color-border-main: #B4B4B4;
 }
 
 /* =========================
@@ -63,7 +67,7 @@ body {
 	.btn-primary {
 		@apply flex items-center justify-center
            bg-brand-orange text-brand-white
-           rounded-button py-7 px-16 cursor-pointer
+           rounded-button py-6 px-16 cursor-pointer
            transition-colors
            disabled:opacity-70 disabled:cursor-not-allowed;
 
@@ -88,5 +92,13 @@ body {
 
 	.btn-text-shifted {
 		@apply translate-x-3;
+	}
+
+	.scrollbar-hide::-webkit-scrollbar {
+		display: none;
+	}
+	.scrollbar-hide {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 }

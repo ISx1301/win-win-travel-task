@@ -1,6 +1,16 @@
 {
-	"title": "WinWinTravel",
-	"open_filters": "Open Filters",
-	"loading": "Loading filters...",
-	"current_request": "Current Search Request (JSON):"
+    "title": "WinWinTravel",
+    "open_filters": "Open Filters",    
+    "modal_title": "Filter",
+
+    "actions": {
+        "apply": "Apply",
+        "cancel": "Clear all parameters"
+    },
+
+    "confirmation": {
+        "title": "Do you want to apply new filter",
+        "confirm": "Apply new filter",
+        "cancel": "Use old filter"
+    }
 }

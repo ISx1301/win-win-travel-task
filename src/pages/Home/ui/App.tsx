@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useQuery } from '@tanstack/react-query'
 
+import { FilterModal } from '@/features/FilterModal'
 import { filterApi } from '@/shared/api'
 import { useFilterStore } from '@/shared/api/FilterStore'
 
@@ -9,8 +11,9 @@ import { Button } from './atoms/Button'
 
 export const App = () => {
 	const { t } = useTranslation('filter')
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
-	const { isLoading } = useQuery({
+	const { data, isLoading } = useQuery({
 		queryKey: ['filters'],
 		queryFn: filterApi.getFilterData
 	})
@@ -18,27 +21,32 @@ export const App = () => {
 	const appliedFilters = useFilterStore(state => state.appliedFilters)
 
 	return (
-		<section className="flex flex-col justify-center items-center w-full h-dvh">
+		<section className="flex flex-col justify-center items-center bg-slate-50 px-4 w-full h-dvh">
 			<div className="bg-white shadow-2xl p-8 rounded-card w-full max-w-sm">
-				{/* Title */}
-				<h1 className="mb-2 font-semibold text-slate-900 text-2xl text-center">
+				<h1 className="mb-6 font-semibold text-slate-900 text-2xl text-center">
 					{t('title')}
 				</h1>
 
-				{/* Action */}
 				<Button
 					isLoading={isLoading}
 					className="w-full"
-					onClick={() => console.log('Open modal')}
+					onClick={() => setIsModalOpen(true)}
 				>
 					{t('open_filters')}
 				</Button>
 			</div>
 
-			{/* Status */}
-			<pre className="bg-slate-100 mt-6 p-4 rounded text-slate-700 text-xs">
-				{JSON.stringify(appliedFilters, null, 2)}
-			</pre>
+			<div className="mt-8 w-full max-w-md">
+				<pre className="bg-slate-900 shadow-xl p-4 border border-slate-800 rounded-lg max-h-60 overflow-auto text-green-400 text-xs">
+					{JSON.stringify(appliedFilters, null, 2)}
+				</pre>
+			</div>
+
+			<FilterModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				filterItems={data?.filterItems || []}
+			/>
 		</section>
 	)
 }
